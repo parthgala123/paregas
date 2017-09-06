@@ -32,6 +32,10 @@
 			"type": "ansible-local",
 			"playbook_dir": "{{user `ansible_playbook_dir`}}",
 			"playbook_file": "{{user `ansible_playbook_file`}}",
+			  "role_paths": [
+        		  "ansible/roles/adriagalin.wordpress",
+        		  "ansible/roles/yatesr.timezone"
+    			  ],
       "staging_directory": "/tmp/ansible",
 			"extra_arguments": [ "-vv --extra-vars \"ag_wordpress.version={{user `wordpress_version`}}\"" ]
 		},

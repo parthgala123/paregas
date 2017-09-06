@@ -3,8 +3,8 @@ VERSION:=latest
 SERVICE:=wordpress
 ANSIBLE_ROLES_PATH:=ansible/roles
 AWS_PROFILE:=default
-AWS_REGION:=eu-west-1
-TERRAFORM_PATH:=terraform/environments/eu-west
+AWS_REGION:=us-east-2
+TERRAFORM_PATH:=terraform/environments/us-east
 TERRARUNNER=cd $(TERRAFORM_PATH) && terraform
 
 .PHONY: check

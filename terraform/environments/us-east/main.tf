@@ -1,4 +1,4 @@
--// TODO: Add tfvars file with all variables
+// TODO: Add tfvars file with all variables
 module "network" {
   source = "../../modules/network"
   cidr_block = "12.0.0.0/16"
@@ -8,12 +8,12 @@ module "network" {
   public_subnet_name = "public"
   public_subnets_az_count = 3
   public_subnets = ["12.0.0.0/24", "12.0.1.0/24", "12.0.2.0/24"]
-  public_subnets_azs = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+  public_subnets_azs = ["us-east-2a", "us-east-2b", "us-east-2c"]
 
   private_subnet_name = "private"
   private_subnets_az_count = 3
   private_subnets = ["12.0.5.0/24", "12.0.6.0/24", "12.0.7.0/24"]
-  private_subnets_azs = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+  private_subnets_azs = ["us-east-2a", "us-east-2b", "us-east-2c"]
 
 }
 
@@ -128,13 +128,13 @@ module "ecs_cluster" {
   ecs_efs_name = "${var.cluster_name}-efs"
   ecs_service_data_dir = "/var/www/html/wordpress/" # /var/www/html/efs-mount-point/
   ecs_launch_configuration_prefix_name = "${var.cluster_name}"
-  ecs_launch_configuration_ami_id = "ami-809f84e6"
+  ecs_launch_configuration_ami_id = "ami-10547475"
   ecs_launch_configuration_security_groups_ids = ["${module.security_group_ecs_instances.aws_security_group_id}","${module.security_group_efs.aws_security_group_id}"]
 
   ecs_aws_autoscaling_group_availability_zones = [
-    "eu-west-1a",
-    "eu-west-1b",
-    "eu-west-1c",
+    "us-east-2a",
+    "us-east-2b",
+    "us-east-2c",
   ]
   ecs_aws_autoscaling_group_name = "ecs-demo-instances"
   ecs_aws_autoscaling_group_subnet_ids = ["${module.network.private_subnet_ids}"]
